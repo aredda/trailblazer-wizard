@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+module _MODEL_::_CONTEXT_::_CONCEPT_
+  class _NAME_ < Application_CONCEPT_
+
+  end
+end
