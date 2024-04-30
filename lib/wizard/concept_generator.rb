@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'active_support/inflector'
+require "active_support/inflector"
 
 module Wizard
   class ConceptGenerator
@@ -18,6 +18,15 @@ module Wizard
 
       false if File.exist?("#{filename}.rb")
 
+      content = copy(model, name, context)
+      create_file("test/fixtures/#{filename}.rb", content)
+
+      filename
+    end
+
+    private
+
+    def copy(model, name, context)
       content = File.read("lib/templates/concept.rb.txt")
 
       content["_MODEL_"] = model.camelize
@@ -25,7 +34,12 @@ module Wizard
       content["_NAME_"] = name.camelize
       content["_CONCEPT_"] = type.camelize while content.include?("_CONCEPT_")
 
-      filename
+      content
+    end
+
+    def create_file(filename, content)
+      FileHelper.mkdir(filename)
+      File.open(filename, "w+") { |file| file.write(content) }
     end
   end
 end
