@@ -15,11 +15,12 @@ module Wizard
       materials.insert(1, context) unless context.nil?
 
       filename = materials.map { |material| ActiveSupport::Inflector.underscore(material) }.join("/")
+      filename = "#{Wizard.configuration.base_directory}/#{filename}.rb"
 
-      false if File.exist?("#{filename}.rb")
+      false if File.exist?(filename)
 
       content = copy(model, name, context)
-      create_file("test/fixtures/#{filename}.rb", content)
+      create_file(filename, content)
 
       filename
     end
