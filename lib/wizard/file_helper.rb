@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "fileutils"
+
 module Wizard
   class FileHelper
     def self.mkdir(filename)
