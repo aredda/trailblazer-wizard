@@ -2,5 +2,12 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "wizard"
-
 require "minitest/autorun"
+
+Wizard.configure do |config|
+  config.base_directory = "test/tmp/concepts"
+end
+
+Minitest.after_run do
+  FileUtils.rm_r(Wizard.configuration.base_directory)
+end

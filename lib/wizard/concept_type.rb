@@ -6,5 +6,12 @@ module Wizard
     FINDER = "finder"
     FORM = "form"
     VIEW = "view"
+
+    ALL = {
+      operation: OPERATION,
+      finder: FINDER,
+      form: FORM,
+      view: VIEW
+    }.freeze
   end
 end
