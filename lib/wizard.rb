@@ -24,6 +24,8 @@ module Wizard
   end
 
   def self.generate(model, **args)
+    raise StandardError, "[model] arg is required" if model.nil?
+
     raise StandardError, "[actions] arg is required" unless args.key? :actions
 
     concepts = ConceptType::ALL.values

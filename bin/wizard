@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require "wizard"
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: TODO"
+
+  opts.on("-m", "--model MODEL", String, "Target model") do |model|
+    options[:model] = model
+  end
+
+  opts.on("-a", "--actions ACTIONS", Array, "Actions") do |actions|
+    options[:actions] = actions
+  end
+
+  opts.on("-o", "--only CONCEPTS", Array, "Only these concepts") do |concepts|
+    options[:only] = concepts
+  end
+
+  opts.on("-x", "--except CONCEPTS", Array, "Except these concepts") do |concepts|
+    options[:except] = concepts
+  end
+
+  opts.on("-c", "--context CONTEXT", String, "Only these concepts") do |context|
+    options[:context] = context
+  end
+end.parse!
+
+Wizard.generate options[:model], **options
