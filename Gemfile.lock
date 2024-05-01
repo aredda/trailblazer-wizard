@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    trailblazer-wizard (0.1.0)
+    trailblazer-wizard (0.0.3)
+      activesupport
 
 GEM
   remote: https://rubygems.org/

@@ -28,7 +28,10 @@ module Wizard
     private
 
     def copy(model, name, context)
-      content = File.read("lib/templates/concept.rb.txt")
+      template = File.dirname(__FILE__)
+      template["lib/wizard"] = "lib/concept.txt"
+
+      content = File.read(template)
 
       content["_MODEL_"] = model.camelize
       content["::_CONTEXT_"] = context.nil? ? "" : "::#{context.camelize}"
