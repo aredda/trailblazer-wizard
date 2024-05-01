@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wizard (0.1.0)
+    trailblazer-wizard (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -64,7 +64,7 @@ DEPENDENCIES
   minitest (~> 5.16)
   rake (~> 13.0)
   rubocop (~> 1.21)
-  wizard!
+  trailblazer-wizard!
 
 BUNDLED WITH
    2.5.9

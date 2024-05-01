@@ -3,7 +3,7 @@
 require_relative "lib/wizard/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "wizard"
+  spec.name = "trailblazer-wizard"
   spec.version = Wizard::VERSION
   spec.authors = ["aredda"]
   spec.email = ["aredda.ibrahim@gmail.com"]
@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
 
-  spec.metadata["allowed_push_host"] = "rubygems.org"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://www.github.com/aredda/trailblazer-wizard"
