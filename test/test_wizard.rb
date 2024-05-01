@@ -8,6 +8,6 @@ class TestWizard < Minitest::Test
   end
 
   def test_that_it_generates_concept_files
-    assert_equal "Generating User concept files...", Wizard.generate('User')
+    assert_equal "Generating User concept files...", Wizard.generate("User")
   end
 end

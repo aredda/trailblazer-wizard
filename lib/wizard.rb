@@ -15,7 +15,7 @@ module Wizard
     @configuration ||= Configuration.new
   end
 
-  def self.configure(&block)
+  def self.configure
     yield(configuration)
   end
 end
