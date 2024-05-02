@@ -47,6 +47,22 @@ Generates:
 
     app/concepts/user/admin/operation/index.rb
 
+## Configuration
+
+To change the base directory `app/concepts`, or maybe pluralize concept directories, or even use alternative
+concept type names... there is the possibility to apply these tweaks by creating an initializer:
+
+    # config/initializers/trailblazer_wizard.rb
+    
+    Wizard.configure do |config|
+        config.base_directory = "example/example"
+        config.puralize = true
+        config.alt_types = {
+            form: :contract,
+            view: 'representable'
+        }
+    end
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/aredda/trailblazer-wizard. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/wizard/blob/main/CODE_OF_CONDUCT.md).
