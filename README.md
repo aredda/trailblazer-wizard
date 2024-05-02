@@ -14,9 +14,38 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
+All concept files are generated inside the `app/concepts` directory.
+
 To generate files, simply run this command:
 
     $ wizard [--model] [--actions] [--only] [--except] [--context]
+
+| Argument | Type   | Presence     | Description                                           |
+|----------|--------|--------------|-------------------------------------------------------|
+| model    | String | **Required** | The model.                                            |
+| actions  | Array  | **Required** | The files' names.                                     |
+| only     | Array  | Optional     | Only the specified *concept types*.                   |
+| except   | Array  | Optional     | Except the specified *concept types*.                 |
+| context  | String | Optional     | A directory to group concept files, `nil` by default. |
+
+Allowed concept types are: `operation | finder | form (meant for contracts) | view (meant for representables)`
+
+#### Example 1:
+
+    wizard --model=User --actions=create --only=operation,form
+
+This command will generate:
+
+    app/concepts/user/operation/create.rb
+    app/concepts/user/form/create.rb
+
+#### Example 2: with context
+
+    wizard --model=User --context=admin --actions=index --only=operation
+
+Generates:
+
+    app/concepts/user/admin/operation/index.rb
 
 ## Contributing
 
