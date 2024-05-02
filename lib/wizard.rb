@@ -34,10 +34,15 @@ module Wizard
     concepts -= args[:except] if args.key? :except
     concepts = args[:only]    if args.key? :only
 
+    output = []
+
     actions.each do |action|
       concepts.each do |concept|
-        fetch_generator(concept.to_s).generate(model, action.to_s, args[:context]&.to_s)
+        file = fetch_generator(concept.to_s).generate(model, action.to_s, args[:context]&.to_s)
+        output << file if file.length.positive?
       end
     end
+
+    output
   end
 end
