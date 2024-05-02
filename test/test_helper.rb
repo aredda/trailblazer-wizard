@@ -6,6 +6,7 @@ require "minitest/autorun"
 
 Wizard.configure do |config|
   config.base_directory = "test/tmp/concepts"
+  config.pluralize = false
 end
 
 Minitest.after_run do
