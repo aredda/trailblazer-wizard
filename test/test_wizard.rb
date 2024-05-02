@@ -17,6 +17,7 @@ class TestWizard < Minitest::Test
 
   def test_that_it_generates_files
     Wizard.configure do |config|
+      config.alt_types = {}
       config.pluralize = false
     end
 
@@ -43,5 +44,18 @@ class TestWizard < Minitest::Test
     Wizard.generate("Category", actions: %i[create], only: %i[operation])
 
     assert File.exist?("test/tmp/concepts/category/operations/create.rb")
+  end
+
+  def test_that_it_uses_alt_types
+    Wizard.configure do |config|
+      config.alt_types = {
+        view: :representable
+      }
+      config.pluralize = false
+    end
+
+    Wizard.generate("Application", actions: %w[index], only: %w[view])
+
+    assert File.exist?("test/tmp/concepts/application/representable/index.rb")
   end
 end

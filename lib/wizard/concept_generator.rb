@@ -10,7 +10,9 @@ module Wizard
       @type = args[:type]
     end
 
-    def type_dirname = Wizard.configuration.pluralize ? ActiveSupport::Inflector.pluralize(type) : type
+    def true_type = (Wizard.configuration.alt_types[type.to_sym] || type).to_s
+
+    def type_dirname = Wizard.configuration.pluralize ? ActiveSupport::Inflector.pluralize(true_type) : true_type
 
     def generate(model, name, context = nil)
       materials = [model, type_dirname, name]
@@ -38,7 +40,8 @@ module Wizard
       content["_MODEL_"] = model.camelize
       content["::_CONTEXT_"] = context.nil? ? "" : "::#{context.camelize}"
       content["_NAME_"] = name.camelize
-      content["_CONCEPT_"] = type_dirname.camelize while content.include?("_CONCEPT_")
+      content["_CONCEPT_"] = type_dirname.camelize
+      content["_CONCEPT_"] = true_type.camelize
 
       content
     end

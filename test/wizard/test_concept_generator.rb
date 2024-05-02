@@ -11,6 +11,8 @@ module Wizard
     end
 
     def test_that_it_generates_concept
+      Wizard.configuration.pluralize = false
+
       generator = Wizard::ConceptGenerator.new type: Wizard::ConceptType::OPERATION
 
       assert_equal "test/tmp/concepts/user/admin/operation/create.rb", generator.generate("User", "create", "Admin")
