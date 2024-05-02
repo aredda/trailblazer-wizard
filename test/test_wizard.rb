@@ -16,6 +16,10 @@ class TestWizard < Minitest::Test
   end
 
   def test_that_it_generates_files
+    Wizard.configure do |config|
+      config.pluralize = false
+    end
+
     Wizard.generate("User", actions: %w[create update], only: %w[operation form])
 
     assert File.exist?("test/tmp/concepts/user/operation/create.rb")
@@ -29,5 +33,15 @@ class TestWizard < Minitest::Test
     assert File.exist?("test/tmp/concepts/user/document/admin/operation/show.rb")
     assert File.exist?("test/tmp/concepts/user/document/admin/view/index.rb")
     assert File.exist?("test/tmp/concepts/user/document/admin/view/show.rb")
+  end
+
+  def test_that_it_pluralize_concept_directories
+    Wizard.configure do |config|
+      config.pluralize = true
+    end
+
+    Wizard.generate("Category", actions: %i[create], only: %i[operation])
+
+    assert File.exist?("test/tmp/concepts/category/operations/create.rb")
   end
 end

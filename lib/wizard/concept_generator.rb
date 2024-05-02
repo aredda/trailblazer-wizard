@@ -6,12 +6,14 @@ module Wizard
   class ConceptGenerator
     attr_reader :type
 
-    def initialize(**args)
+    def initialize(**args)\
       @type = args[:type]
     end
 
+    def type_dirname = Wizard.configuration.pluralize ? ActiveSupport::Inflector.pluralize(type) : type
+
     def generate(model, name, context = nil)
-      materials = [model, type, name]
+      materials = [model, type_dirname, name]
       materials.insert(1, context) unless context.nil?
 
       filename = materials.map { |material| ActiveSupport::Inflector.underscore(material) }.join("/")
@@ -36,7 +38,7 @@ module Wizard
       content["_MODEL_"] = model.camelize
       content["::_CONTEXT_"] = context.nil? ? "" : "::#{context.camelize}"
       content["_NAME_"] = name.camelize
-      content["_CONCEPT_"] = type.camelize while content.include?("_CONCEPT_")
+      content["_CONCEPT_"] = type_dirname.camelize while content.include?("_CONCEPT_")
 
       content
     end

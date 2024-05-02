@@ -1,0 +1,9 @@
+module Wizard
+  class Configuration
+    @base_directory: String
+    @pluralize: bool
+
+    attr_accessor base_directory: String
+    attr_accessor pluralize: bool
+  end
+end
