@@ -6,7 +6,7 @@ A helper to aid you with generating blank Trailblazer concept files including: o
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add trailblazer-wizard
+    $ gem 'trailblazer-wizard'
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
