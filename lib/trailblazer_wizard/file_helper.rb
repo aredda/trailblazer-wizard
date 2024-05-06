@@ -2,7 +2,7 @@
 
 require "fileutils"
 
-module Wizard
+module TrailblazerWizard
   class FileHelper
     def self.mkdir(filename)
       dirs = filename.split "/"

@@ -30,4 +30,4 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-Wizard.generate options[:model], **options
+TrailblazerWizard.generate options[:model], **options
