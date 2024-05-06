@@ -2,7 +2,7 @@
 
 require "active_support/inflector"
 
-module Wizard
+module TrailblazerWizard
   class ConceptGenerator
     attr_reader :type
 
@@ -10,16 +10,16 @@ module Wizard
       @type = args[:type]
     end
 
-    def true_type = (Wizard.configuration.alt_types[type.to_sym] || type).to_s
+    def true_type = (TrailblazerWizard.configuration.alt_types[type.to_sym] || type).to_s
 
-    def type_dirname = Wizard.configuration.pluralize ? ActiveSupport::Inflector.pluralize(true_type) : true_type
+    def type_dirname = TrailblazerWizard.configuration.pluralize ? ActiveSupport::Inflector.pluralize(true_type) : true_type
 
     def generate(model, name, context = nil)
       materials = [model, type_dirname, name]
       materials.insert(1, context) unless context.nil?
 
       filename = materials.map { |material| ActiveSupport::Inflector.underscore(material) }.join("/")
-      filename = "#{Wizard.configuration.base_directory}/#{filename}.rb"
+      filename = "#{TrailblazerWizard.configuration.base_directory}/#{filename}.rb"
 
       false if File.exist?(filename)
 
@@ -33,7 +33,7 @@ module Wizard
 
     def copy(model, name, context)
       template = File.dirname(__FILE__)
-      template["lib/wizard"] = "lib/concept.txt"
+      template["lib/trailblazer_wizard"] = "lib/concept.txt"
 
       content = File.read(template)
 

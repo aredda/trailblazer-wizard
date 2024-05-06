@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Wizard
+module TrailblazerWizard
   module ConceptType
     OPERATION = "operation"
     FINDER = "finder"
