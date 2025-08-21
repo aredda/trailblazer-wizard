@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Wizard
+module TrailblazerWizard
   class Configuration
     attr_accessor :base_directory, :pluralize, :alt_types
 

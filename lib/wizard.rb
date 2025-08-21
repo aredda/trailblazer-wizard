@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "wizard/version"
-require_relative "wizard/concept_type"
-require_relative "wizard/concept_generator"
-require_relative "wizard/file_helper"
-require_relative "wizard/configuration"
+require_relative "trailblazer_wizard/version"
+require_relative "trailblazer_wizard/concept_type"
+require_relative "trailblazer_wizard/concept_generator"
+require_relative "trailblazer_wizard/file_helper"
+require_relative "trailblazer_wizard/configuration"
 
-module Wizard
+module TrailblazerWizard
   def self.pool
     @pool ||= {}
   end

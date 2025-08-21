@@ -1,4 +1,4 @@
-module Wizard
+module TrailblazerWizard
   class Configuration
     @base_directory: String
     @pluralize: bool

@@ -54,7 +54,7 @@ concept type names... there is the possibility to apply these tweaks by creating
 
     # config/initializers/trailblazer_wizard.rb
     
-    Wizard.configure do |config|
+    TrailblazerWizard.configure do |config|
         config.base_directory = "example/example"
         config.puralize = true
         config.alt_types = {

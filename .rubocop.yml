@@ -23,3 +23,6 @@ Metrics/MethodLength:
 
 Metrics/PerceivedComplexity:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false

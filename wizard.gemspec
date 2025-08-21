@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/wizard/version"
+require_relative "lib/trailblazer_wizard/version"
 
 Gem::Specification.new do |spec|
   spec.name = "trailblazer-wizard"
-  spec.version = Wizard::VERSION
+  spec.version = TrailblazerWizard::VERSION
   spec.authors = ["aredda"]
   spec.email = ["aredda.ibrahim@gmail.com"]
 
