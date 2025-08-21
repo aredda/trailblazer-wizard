@@ -43,6 +43,8 @@ module TrailblazerWizard
       end
     end
 
+    puts output
+
     output
   end
 end
