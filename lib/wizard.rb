@@ -43,6 +43,8 @@ module Wizard
       end
     end
 
+    puts output
+
     output
   end
 end
