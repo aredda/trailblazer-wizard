@@ -26,6 +26,8 @@ module TrailblazerWizard
   def self.generate(model, **args)
     raise StandardError, "[model] arg is required" if model.nil?
 
+    return generate_full(model, **args) if args.key?(:full) && args[:full]
+
     raise StandardError, "[actions] arg is required" unless args.key? :actions
 
     concepts = ConceptType::ALL.values
@@ -46,5 +48,22 @@ module TrailblazerWizard
     puts output
 
     output
+  end
+
+  def self.generate_full(model, **args)
+    batch = {
+      operation: %w[index show create update destroy],
+      form: %w[create update],
+      finder: %w[base],
+      view: %w[index show]
+    }
+
+    batch.each_key do |concept|
+      batch[concept].each do |action|
+        file = fetch_generator(concept.to_s).generate(model, action.to_s, args[:context]&.to_s)
+
+        puts file if file.length.positive?
+      end
+    end
   end
 end

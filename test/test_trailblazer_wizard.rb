@@ -58,4 +58,42 @@ class TestTrailblazerWizard < Minitest::Test
 
     assert File.exist?("test/tmp/concepts/application/representable/index.rb")
   end
+
+  def test_that_it_generates_the_full_batch
+    TrailblazerWizard.generate("TestModel", full: true)
+
+    assert File.exist?("test/tmp/concepts/test_model/operation/index.rb")
+    assert File.exist?("test/tmp/concepts/test_model/operation/show.rb")
+    assert File.exist?("test/tmp/concepts/test_model/operation/create.rb")
+    assert File.exist?("test/tmp/concepts/test_model/operation/update.rb")
+    assert File.exist?("test/tmp/concepts/test_model/operation/destroy.rb")
+    assert File.exist?("test/tmp/concepts/test_model/form/create.rb")
+    assert File.exist?("test/tmp/concepts/test_model/form/update.rb")
+    assert File.exist?("test/tmp/concepts/test_model/view/index.rb")
+    assert File.exist?("test/tmp/concepts/test_model/view/show.rb")
+    assert File.exist?("test/tmp/concepts/test_model/finder/base.rb")
+  end
+
+  def test_that_it_generates_the_full_batch_with_context
+    TrailblazerWizard.generate("TestModel", full: true, context: :admin)
+
+    assert File.exist?("test/tmp/concepts/test_model/admin/operation/index.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/operation/show.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/operation/create.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/operation/update.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/operation/destroy.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/form/create.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/form/update.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/view/index.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/view/show.rb")
+    assert File.exist?("test/tmp/concepts/test_model/admin/finder/base.rb")
+  end
+
+  def test_that_it_ignores_full_generation_if_arg_is_false
+    error = assert_raises StandardError do
+      TrailblazerWizard.generate("TestModel", full: false, context: :admin)
+    end
+
+    assert_equal "[actions] arg is required", error.message
+  end
 end

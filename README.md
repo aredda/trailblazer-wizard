@@ -18,15 +18,16 @@ All concept files are generated inside the `app/concepts` directory.
 
 To generate files, simply run this command:
 
-    $ wizard [--model] [--actions] [--only] [--except] [--context]
+    $ wizard [--model] [--full] [--actions] [--only] [--except] [--context]
 
-| Argument | Type   | Presence     | Description                                           |
-|----------|--------|--------------|-------------------------------------------------------|
-| model    | String | **Required** | The model.                                            |
-| actions  | Array  | **Required** | The files' names.                                     |
-| only     | Array  | Optional     | Only the specified *concept types*.                   |
-| except   | Array  | Optional     | Except the specified *concept types*.                 |
-| context  | String | Optional     | A directory to group concept files, `nil` by default. |
+| Argument | Type    | Presence     | Description                                                              |
+|----------|---------|--------------|--------------------------------------------------------------------------|
+| model    | String  | **Required** | The model.                                                               |
+| actions  | Array   | **Required** | The files' names.                                                        |
+| only     | Array   | Optional     | Only the specified *concept types*.                                      |
+| except   | Array   | Optional     | Except the specified *concept types*.                                    |
+| context  | String  | Optional     | A directory to group concept files, `nil` by default.                    |
+| full     | Boolean | Optional     | Generate the whole batch of concepts for this model, `false` by default. |
 
 Allowed concept types are: `operation | finder | form (meant for contracts) | view (meant for representables)`
 

@@ -21,7 +21,7 @@ module TrailblazerWizard
       filename = materials.map { |material| ActiveSupport::Inflector.underscore(material) }.join("/")
       filename = "#{TrailblazerWizard.configuration.base_directory}/#{filename}.rb"
 
-      false if File.exist?(filename)
+      return if File.exist?(filename)
 
       content = copy(model, name, context)
       create_file(filename, content)
