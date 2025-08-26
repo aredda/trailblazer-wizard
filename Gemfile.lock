@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trailblazer-wizard (0.0.7)
+    trailblazer-wizard (0.0.6)
       activesupport
 
 GEM

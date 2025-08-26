@@ -7,7 +7,7 @@ require "wizard"
 options = {}
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: TODO"
+  opts.banner = "Usage: wizard [options]"
 
   opts.on("-m", "--model MODEL", String, "Target model") do |model|
     options[:model] = model
@@ -25,8 +25,12 @@ OptionParser.new do |opts|
     options[:except] = concepts
   end
 
-  opts.on("-c", "--context CONTEXT", String, "Only these concepts") do |context|
+  opts.on("-c", "--context CONTEXT", String, "Context of these concepts") do |context|
     options[:context] = context
+  end
+
+  opts.on("-f", "--[no-]full", "Generate the whole batch of concepts") do |full|
+    options[:full] = full
   end
 end.parse!
 
